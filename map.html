@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic configuration -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toronto Paramedic Services</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.js"></script>
+
+    <!-- Bootstrap stylesheet link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href='https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.css'>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation bar using Bootstrap -->
+    <nav class="navbar navbar-expand-lg bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white">GGR 472</a>
+            <!-- Set navbar toggler for small screens -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Links in nav bar -->
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="index.html">About this
+                            website</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">Interactive map</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+
+        <!-- Content Row -->
+        <div class="row">
+
+            <!-- Side panel -->
+            <div class="col-md-3 bg-warning side-panel">
+                <h5 class="mt-3" style="text-align: center;">Mapping Toronto's Health Services</h5>
+                <p style="text-align: center; font-weight: 600;">Janice Walder</p>
+                <br>
+                <p style="font-weight: 600;">This is a map of existing health services in Toronto. Select options from
+                    the list below to update the map:</p>
+
+                <div id="checkboxes" class="checkbox_container">
+                    <input type="checkbox" id="toggle-health-services" checked>
+                    <label for="health-services"> Health services</label><br>
+
+                    <input type="checkbox" id="toggle-mental-health">
+                    <label for="mental-health-services"> Mental health services</label><br>
+
+                    <input type="checkbox" id="toggle-sexual-health">
+                    <label for="sexual-health-services"> Sexual health services</label><br>
+
+                    <input type="checkbox" id="toggle-stations">
+                    <label for="stations"> Ambulance stations</label><br>
+                </div>
+
+                <br>
+                <p style="font-weight: 600;">Filter by your accessibility needs by selecting from the options below:</p>
+
+                <div id="filters" class="checkbox_container">
+                    <input type="checkbox" id="toggle-commercial">
+                    <label for="commercial"> Commercial</label><br>
+
+                    <input type="checkbox" id="toggle-nonprofit">
+                    <label for="nonprofit"> Non-profit</label><br>
+                </div>
+
+                <br>
+                <div class="legend">
+                    <p style="font-weight: 600;">Legend</p>
+
+                    <div>
+                        <span class="legend-symbol" style="background-color:#ff9500;"></span>
+                        Health services
+                    </div>
+
+                    <div>
+                        <span class="legend-symbol" style="background-color:#9000ff;"></span>
+                        Mental health services
+                    </div>
+
+                    <div>
+                        <span class="legend-symbol" style="background-color:#fb00ff;"></span>
+                        Sexual health services
+                    </div>
+
+                    <div>
+                        <span class="legend-symbol" style="background-color:#ff0000;"></span>
+                        Ambulance stations
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Map Column -->
+            <div class="container-fluid col-md-9">
+                <div class="map-container mapboxgl-map" id="my-map">
+                    <div class="mapboxgl-canary" style="visibility: hidden;"></div>
+                    <div
+                        class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate">
+                        <canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" role="region" width="1015"
+                            height="1251" style="width: 676.5px; height: 834px;"></canvas></div>
+                    <div class="mapboxgl-control-container">
+                        <div class="mapboxgl-ctrl-top-left"></div>
+                        <div class="mapboxgl-ctrl-top"></div>
+                        <div class="mapboxgl-ctrl-top-right"></div>
+                        <div class="mapboxgl-ctrl-right"></div>
+                        <div class="mapboxgl-ctrl-bottom-right">
+                            <div class="mapboxgl-ctrl mapboxgl-ctrl-attrib"><button class="mapboxgl-ctrl-attrib-button"
+                                    type="button" aria-label="Toggle attribution"><span class="mapboxgl-ctrl-icon"
+                                        aria-hidden="true" title="Toggle attribution"></span></button>
+                                <div class="mapboxgl-ctrl-attrib-inner"><a href="https://www.mapbox.com/about/maps"
+                                        rel="noopener nofollow">© Mapbox</a> <a
+                                        href="https://www.openstreetmap.org/copyright/" rel="noopener nofollow">©
+                                        OpenStreetMap</a> <a
+                                        href="https://apps.mapbox.com/feedback/?owner=janice404&amp;id=cmkyibwwh00h001pa0h822d13&amp;access_token=pk.eyJ1IjoiamFuaWNlNDA0IiwiYSI6ImNtYW56cTZmZzAxcHUybXE0cmpmcng1dzEifQ.SUIs5UGxRbRMgrc9zC1PAg#/-79.3897/43.6548/12"
+                                        rel="noopener nofollow" class="mapbox-improve-map">Improve this map</a></div>
+                            </div>
+                        </div>
+                        <div class="mapboxgl-ctrl-bottom"></div>
+                        <div class="mapboxgl-ctrl-bottom-left">
+                            <div class="mapboxgl-ctrl" style="display: block;"><a class="mapboxgl-ctrl-logo"
+                                    target="_blank" rel="noopener nofollow" href="https://www.mapbox.com/"
+                                    aria-label="Mapbox homepage"></a></div>
+                        </div>
+                        <div class="mapboxgl-ctrl-left"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

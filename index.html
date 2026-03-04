@@ -1,0 +1,81 @@
+<html lang="en" data-bs-theme="light">
+
+<head>
+
+    <!-- Basic configuration -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toronto Paramedic Services</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.js"></script>
+
+
+    <!-- Bootstrap stylesheet link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Mapbox and CSS stylesheet links -->
+    <link rel="stylesheet" href='https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.css'>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation bar using Bootstrap -->
+    <nav class="navbar navbar-expand-lg bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white">GGR 472</a>
+            <!-- Set navbar toggler for small screens -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Links in nav bar -->
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">About this website</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="map.html">Interactive map</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center p-3 mb-2 bg-warning">
+        
+        <!-- Heading section -->
+        <div class="row">
+            <h3><br></h3>
+            <h2>Mapping Toronto's Paramedic Services</h2>
+            <h4>Janice Walder</h4>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <br>
+                <img src="data/stations_map.png" class="img-fluid" alt="ambulance">
+            </div>
+        </div>
+
+        <!-- Links section - GeoJSON from data folder; external link to City of Toronto website -->
+        <div class="row">
+            <p>
+                <br>
+                <a class="btn btn-primary bg-secondary" target="”_blank”" href="data/ambulance_stations.geojson">Click
+                    here</a>
+                to view a GeoJSON file of Toronto's ambulance stations.
+            </p>
+
+            <p>
+                <a
+                    href="https://www.toronto.ca/city-government/accountability-operations-customer-service/city-administration/staff-directory-divisions-and-customer-service/toronto-paramedic-services/">Follow
+                    this link</a>
+                to find out more about Toronto Paramedic Services.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+
+</html>
